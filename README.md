@@ -1,5 +1,10 @@
 # Air Quality Monitor with WhatsApp Alerts & Cloud Logging
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![ESP32](https://img.shields.io/badge/ESP32-Supported-blue.svg)](https://www.espressif.com/)
+[![Sensor: SPS30](https://img.shields.io/badge/Sensor-Sensirion%20SPS30-green.svg)](https://sensirion.com/products/catalog/SPS30/)
+[![Cloud: CircuitDigest](https://img.shields.io/badge/Cloud-CircuitDigest%20Cloud-orange.svg)](https://circuitdigest.com/)
+
 An IoT-based **Air Quality Monitoring System** powered by an **ESP32**, **Sensirion SPS30 Optical Particulate Matter Sensor**, **ILI9341 2.4" TFT Display**, and **CircuitDigest Cloud**.
 
 This system measures real-time particulate matter mass concentrations ($\text{PM}_{1.0}$, $\text{PM}_{2.5}$, $\text{PM}_{4.0}$, $\text{PM}_{10}$) and numerical particle counts ($\text{NC}_{0.5}$ to $\text{NC}_{10}$), calculates the **Indian CPCB Air Quality Index (AQI)**, renders a 2x5 portrait dashboard on the TFT display, streams telemetry in dual batches to CircuitDigest Cloud, and dispatches WhatsApp alert notifications when AQI exceeds the CPCB Poor category threshold ($\text{AQI} > 200$).
@@ -17,6 +22,19 @@ This system measures real-time particulate matter mass concentrations ($\text{PM
   - **Brownout Detector Disabled**: Prevents system reboots caused by peak battery/power supply voltage dips.
   - **Staged 3-Step Soft-Start**: Sequentially initializes Display (5s pause), SPS30 Sensor Fan (5s pause), and Wi-Fi/Cloud to isolate startup power draw.
   - **Wi-Fi Auto-Reboot Handler**: Auto-restarts system on Wi-Fi loss for a clean staged reconnection sequence.
+
+---
+
+## 📊 CPCB Air Quality Index Categories
+
+| AQI Range | Category | Color Indicator | Action / Warning Level |
+| :---: | :---: | :---: | :--- |
+| **0 – 50** | Good | Green | Minimal Impact |
+| **51 – 100** | Satisfactory | Green | Minor breathing discomfort to sensitive people |
+| **101 – 200** | Moderate | Yellow | Breathing discomfort to people with lungs, asthma, and heart diseases |
+| **201 – 300** | Poor | Red | Breathing discomfort to most people on prolonged exposure **(WhatsApp Alert Triggered)** |
+| **301 – 400** | Very Poor | Red | Respiratory illness on prolonged exposure |
+| **401 – 500+**| Severe | Red | Affects healthy people and seriously impacts those with existing diseases |
 
 ---
 
