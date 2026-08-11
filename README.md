@@ -13,7 +13,7 @@ This system measures real-time particulate matter mass concentrations ($\text{PM
 
 ## 🌟 Key Features
 
-- **Sensirion SPS30 Laser PM Sensor**: Measures precise particle mass concentrations ($\mu\text{g/m}^3$) and particle count concentrations (`#/cm³`) via UART (`Serial2`).
+- **Sensirion SPS30 Laser PM Sensor**: Measures precise particle mass concentrations ($\mu\text{g/m}^3$) and particle count concentrations (`particles/cm³`) via UART (`Serial2`).
 - **Indian CPCB AQI Calculation**: Computes real-time Indian CPCB Air Quality Index from $\text{PM}_{2.5}$ and $\text{PM}_{10}$ sub-indices with standard breakpoint formulas.
 - **2x5 Portrait Dashboard Grid (240x320)**: Displays 10 parameter slots on the ILI9341 TFT display with color-coded safety indicators (Green for Safe, Red for Threshold Violation, Yellow for Info Only).
 - **Dual-Batch MQTT Cloud Telemetry**: Publishes 10 telemetry variables to CircuitDigest Cloud every 5 seconds in two 5-parameter batches to maximize MQTT throughput.
@@ -72,11 +72,11 @@ The system publishes 10 parameters to CircuitDigest Cloud in two batches:
 | `analog-input-2` | `KEY_PM2_5_MASS` | $\mu\text{g/m}^3$ | $\text{PM}_{2.5}$ Mass Concentration |
 | `analog-input-3` | `KEY_PM4_0_MASS` | $\mu\text{g/m}^3$ | $\text{PM}_{4.0}$ Mass Concentration |
 | `analog-input-4` | `KEY_PM10_MASS`  | $\mu\text{g/m}^3$ | $\text{PM}_{10}$ Mass Concentration |
-| `analog-input-5` | `KEY_PM0_5_NUM`  | #/cm³  | $\text{NC}_{0.5}$ Number Concentration |
-| `analog-input-6` | `KEY_PM1_0_NUM`  | #/cm³  | $\text{NC}_{1.0}$ Number Concentration |
-| `analog-input-7` | `KEY_PM2_5_NUM`  | #/cm³  | $\text{NC}_{2.5}$ Number Concentration |
-| `analog-input-8` | `KEY_PM4_0_NUM`  | #/cm³  | $\text{NC}_{4.0}$ Number Concentration |
-| `analog-input-9` | `KEY_PM10_NUM`   | #/cm³  | $\text{NC}_{10}$ Number Concentration |
+| `analog-input-5` | `KEY_PM0_5_NUM`  | particles/cm³ | $\text{NC}_{0.5}$ Number Concentration |
+| `analog-input-6` | `KEY_PM1_0_NUM`  | particles/cm³ | $\text{NC}_{1.0}$ Number Concentration |
+| `analog-input-7` | `KEY_PM2_5_NUM`  | particles/cm³ | $\text{NC}_{2.5}$ Number Concentration |
+| `analog-input-8` | `KEY_PM4_0_NUM`  | particles/cm³ | $\text{NC}_{4.0}$ Number Concentration |
+| `analog-input-9` | `KEY_PM10_NUM`   | particles/cm³ | $\text{NC}_{10}$ Number Concentration |
 | `analog-input-10`| `KEY_AQI`        | AQI Index | Indian CPCB AQI Value |
 
 ---
