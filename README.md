@@ -5,7 +5,7 @@
 [![Sensor: SPS30](https://img.shields.io/badge/Sensor-Sensirion%20SPS30-green.svg)](https://sensirion.com/products/catalog/SPS30/)
 [![Cloud: CircuitDigest](https://img.shields.io/badge/Cloud-CircuitDigest%20Cloud-orange.svg)](https://circuitdigest.com/)
 
-An IoT-based **Air Quality Monitoring System** powered by an **ESP32**, **Sensirion SPS30 Optical Particulate Matter Sensor**, **ILI9341 2.4" TFT Display**, and **CircuitDigest Cloud**.
+An IoT-based **Air Quality Monitoring System** powered by an **ESP32**, **Sensirion SPS30 Optical Particulate Matter Sensor**, **2.4" 240x320 SPI TFT Display (TJCTM24024-SPI / ILI9341)**, and **CircuitDigest Cloud**.
 
 This system measures real-time particulate matter mass concentrations ($\text{PM}_{1.0}$, $\text{PM}_{2.5}$, $\text{PM}_{4.0}$, $\text{PM}_{10}$) and numerical particle counts ($\text{NC}_{0.5}$ to $\text{NC}_{10}$), calculates the **Indian CPCB Air Quality Index (AQI)**, renders a 2x5 portrait dashboard on the TFT display, streams telemetry in dual batches to CircuitDigest Cloud, and dispatches WhatsApp alert notifications when AQI exceeds the CPCB Poor category threshold ($\text{AQI} > 200$).
 
@@ -15,7 +15,7 @@ This system measures real-time particulate matter mass concentrations ($\text{PM
 
 - **Sensirion SPS30 Laser PM Sensor**: Measures precise particle mass concentrations ($\mu\text{g/m}^3$) and particle count concentrations (`particles/cm³`) via UART (`Serial2`).
 - **Indian CPCB AQI Calculation**: Computes real-time Indian CPCB Air Quality Index from $\text{PM}_{2.5}$ and $\text{PM}_{10}$ sub-indices with standard breakpoint formulas.
-- **2x5 Portrait Dashboard Grid (240x320)**: Displays 10 parameter slots on the ILI9341 TFT display with color-coded safety indicators (Green for Safe, Red for Threshold Violation, Yellow for Info Only).
+- **2x5 Portrait Dashboard Grid (240x320)**: Displays 10 parameter slots on the TJCTM24024-SPI (ILI9341 controller) TFT display with color-coded safety indicators (Green for Safe, Red for Threshold Violation, Yellow for Info Only).
 - **Dual-Batch MQTT Cloud Telemetry**: Publishes 10 telemetry variables to CircuitDigest Cloud every 5 seconds in two 5-parameter batches to maximize MQTT throughput.
 - **WhatsApp Notification Integration**: Triggers automated HTTP POST WhatsApp alert notifications via CircuitDigest Cloud API when CPCB AQI enters the **POOR** category ($> 200$). State-locking prevents duplicate alert spamming until air quality recovers.
 - **Robust Hardware Protection**:
@@ -48,7 +48,7 @@ This system measures real-time particulate matter mass concentrations ($\text{PM
 | **Toggle Switch** | 1 | SPDT Power ON/OFF Switch (Side -> TP4056 `OUT+`, Middle -> Boost `IN+`) |
 | **MT3608 Boost Converter** | 1 | 3.7V to 5V Step-Up Converter (`OUT+` -> ESP32 `VIN`, `OUT-` -> ESP32 `GND`) |
 | **Sensirion SPS30** | 1 | Optical PM Sensor (`VCC` -> ESP32 `VIN` 5V, `GND` -> `GND`, `RX` -> GPIO 17 `TX2`, `TX` -> GPIO 16 `RX2`) |
-| **ILI9341 TFT Display** | 1 | 2.4" SPI Color Display (`VCC`/`LED` -> 3.3V, `GND` -> GND, `CS` -> GPIO 2, `RST` -> GPIO 4, `DC` -> GPIO 5, `SDI/MOSI` -> GPIO 23, `SCK` -> GPIO 18, `SDO/MISO` -> GPIO 19) |
+| **2.4" SPI TFT Display** | 1 | **TJCTM24024-SPI** (240x320 ILI9341) (`VCC`/`LED` -> 3.3V, `GND` -> GND, `CS` -> GPIO 2, `RST` -> GPIO 4, `DC` -> GPIO 5, `SDI/MOSI` -> GPIO 23, `SCK` -> GPIO 18, `SDO/MISO` -> GPIO 19) |
 
 ```
 [ 18650 3.7V Battery ] ----(B+ / B-)----> [ TP4056 Charger ] 

@@ -13,7 +13,7 @@ Detailed setup guide for hardware wiring, Sensirion SPS30 configuration, Indian 
 - **Toggle Switch (SPDT ON/OFF Switch)**
 - **MT3608 DC-DC Step-Up Boost Converter Module**
 - **Sensirion SPS30 Optical PM Sensor** (UART mode)
-- **2.4" ILI9341 SPI TFT Display (240x320 resolution)**
+- **2.4" SPI 240x320 TFT Display (TJCTM24024-SPI / ILI9341)**
 
 ### Wiring Tables
 
@@ -39,9 +39,9 @@ Detailed setup guide for hardware wiring, Sensirion SPS30 configuration, Indian 
 | `Pin 4 (Select)` | `GND` | Pull LOW for UART interface selection |
 | `Pin 5 (GND)` | `GND` | Common Ground |
 
-#### 3. 2.4" ILI9341 SPI TFT Display
+#### 3. 2.4" SPI TFT Display (TJCTM24024-SPI)
 
-| ILI9341 TFT Pin | ESP32 Pin | Notes |
+| TJCTM24024-SPI Pin | ESP32 Pin | Notes |
 | :--- | :--- | :--- |
 | `VCC` | `3.3V` | Display Logic Power Supply |
 | `GND` | `GND` | Common Ground |
