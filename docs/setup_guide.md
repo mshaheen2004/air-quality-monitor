@@ -24,7 +24,7 @@ Detailed setup guide for hardware wiring, Sensirion SPS30 configuration, Indian 
 
 | ILI9341 TFT Pin | ESP32 Pin | Notes |
 | :--- | :--- | :--- |
-| `VCC` | `3.3V` / `5V` | Power supply |
+| `VCC` | `3.3V` | Power supply |
 | `GND` | `GND` | Common Ground |
 | `CS` | `GPIO 2` | Chip Select |
 | `RESET` | `GPIO 4` | Display Reset |

@@ -49,7 +49,8 @@ This system measures real-time particulate matter mass concentrations ($\text{PM
 
 ```
 [ Sensirion SPS30 ]        [ ESP32 Dev Board ]        [ ILI9341 TFT Display ]
-  VCC -----------------------> 5V -----------------------> VCC / LED
+  VCC -----------------------> 5V
+                               3.3V ---------------------> VCC / LED
   GND -----------------------> GND ----------------------> GND
   TX ------------------------> GPIO 16 (RX2)
   RX ------------------------> GPIO 17 (TX2)
