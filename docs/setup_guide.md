@@ -34,7 +34,7 @@ Detailed setup guide for hardware wiring, Sensirion SPS30 configuration, Indian 
 | `LED` | `3.3V` | Backlight Power |
 
 ### Wiring Diagram
-![Wiring Diagram](images/wiring_diagram.png)
+![Wiring Diagram](images/Wiring-Diagram.jpg)
 
 ---
 
