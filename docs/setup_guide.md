@@ -1,4 +1,4 @@
-# Air Quality Monitor - Setup Guide
+# AI based Air Quality Monitoring using ESP32 - Setup Guide
 
 Detailed setup guide for hardware wiring, Sensirion SPS30 configuration, Indian CPCB AQI calculation logic, CircuitDigest Cloud setup, and WhatsApp API integration.
 

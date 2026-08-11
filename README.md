@@ -1,4 +1,4 @@
-# Air Quality Monitor with WhatsApp Alerts & Cloud Logging
+# AI based Air Quality Monitoring using ESP32
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![ESP32](https://img.shields.io/badge/ESP32-Supported-blue.svg)](https://www.espressif.com/)
