@@ -81,6 +81,24 @@ The system publishes 10 parameters to CircuitDigest Cloud in two batches:
 
 ---
 
+## 🖼️ Circuit & Hardware Setup
+
+### Wiring Diagram
+![Wiring Diagram](docs/images/wiring_diagram.png)
+
+> **Note**: Place your wiring diagram image at `docs/images/wiring_diagram.png`.
+
+---
+
+## 📸 Output & Dashboard Demo
+
+### Hardware Output
+![Project Output](docs/images/output_display.png)
+
+> **Note**: Place your physical output or display preview image at `docs/images/output_display.png`.
+
+---
+
 ## 📁 Repository Structure
 
 ```
@@ -89,6 +107,9 @@ air-quality-monitor/
 │   └── airqualitymonitor/
 │       └── airqualitymonitor.ino   # Main ESP32 Arduino sketch
 ├── docs/
+│   ├── images/
+│   │   ├── output_display.png      # Hardware & TFT Display Output Image
+│   │   └── wiring_diagram.png      # Circuit Wiring Diagram Image
 │   └── setup_guide.md              # Detailed wiring & cloud setup guide
 ├── LICENSE                         # MIT Open-Source License
 └── README.md                       # Main Project Documentation

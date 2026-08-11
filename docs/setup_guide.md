@@ -33,6 +33,9 @@ Detailed setup guide for hardware wiring, Sensirion SPS30 configuration, Indian 
 | `SCK (CLK)` | `GPIO 18` | SPI Clock |
 | `LED` | `3.3V` | Backlight Power |
 
+### Wiring Diagram
+![Wiring Diagram](images/wiring_diagram.png)
+
 ---
 
 ## 2. Indian CPCB AQI Breakpoint Reference
