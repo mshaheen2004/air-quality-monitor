@@ -8,30 +8,50 @@ Detailed setup guide for hardware wiring, Sensirion SPS30 configuration, Indian 
 
 ### Component List
 - **ESP32 Development Board** (30-pin or 38-pin version)
+- **18650 3.7V Rechargeable Li-ion Battery**
+- **TP4056 Micro-USB / Type-C Li-ion Charging Module**
+- **Toggle Switch (SPDT ON/OFF Switch)**
+- **MT3608 DC-DC Step-Up Boost Converter Module**
 - **Sensirion SPS30 Optical PM Sensor** (UART mode)
 - **2.4" ILI9341 SPI TFT Display (240x320 resolution)**
-- **5V 2A Power Adapter / USB Power Source**
 
-### Wiring Table
+### Wiring Tables
+
+#### 1. Power Supply & Battery Management
+
+| From Component / Terminal | To Component / Terminal | Description / Notes |
+| :--- | :--- | :--- |
+| `18650 Battery (+)` | `TP4056 (B+)` | Positive battery terminal connection |
+| `18650 Battery (-)` | `TP4056 (B-)` | Negative battery terminal connection |
+| `TP4056 (OUT+)` | `Toggle Switch (Side Pin)` | Charger output positive to switch input |
+| `Toggle Switch (Middle Pin)` | `Boost Converter (IN+)` | Switched power input to step-up converter |
+| `TP4056 (OUT-)` | `Boost Converter (IN-)` | Ground reference for step-up converter |
+| `Boost Converter (OUT+)` | `ESP32 (VIN)` | Regulated 5V main power supply to ESP32 |
+| `Boost Converter (OUT-)` | `ESP32 (GND)` | System common ground |
+
+#### 2. Sensirion SPS30 Optical PM Sensor
 
 | Sensirion SPS30 Pin | ESP32 Pin | Notes |
 | :--- | :--- | :--- |
-| `Pin 1 (VDD)` | `5V` | Must be powered with 5V for internal fan motor |
+| `Pin 1 (VDD / VCC)` | `VIN` (5V) | Powered from 5V rail for internal fan motor |
 | `Pin 2 (RX)` | `GPIO 17` (TX2) | Serial UART TX to RX |
 | `Pin 3 (TX)` | `GPIO 16` (RX2) | Serial UART RX to TX |
 | `Pin 4 (Select)` | `GND` | Pull LOW for UART interface selection |
 | `Pin 5 (GND)` | `GND` | Common Ground |
 
+#### 3. 2.4" ILI9341 SPI TFT Display
+
 | ILI9341 TFT Pin | ESP32 Pin | Notes |
 | :--- | :--- | :--- |
-| `VCC` | `3.3V` | Power supply |
+| `VCC` | `3.3V` | Display Logic Power Supply |
 | `GND` | `GND` | Common Ground |
 | `CS` | `GPIO 2` | Chip Select |
 | `RESET` | `GPIO 4` | Display Reset |
 | `DC` | `GPIO 5` | Data / Command Select |
-| `SDI (MOSI)` | `GPIO 23` | SPI MOSI |
-| `SCK (CLK)` | `GPIO 18` | SPI Clock |
-| `LED` | `3.3V` | Backlight Power |
+| `SDI (MOSI)` | `GPIO 23` | SPI MOSI Data Line |
+| `SCK (CLK)` | `GPIO 18` | SPI Serial Clock |
+| `LED` | `3.3V` | Display Backlight Power Supply |
+| `SDO (MISO)` | `GPIO 19` | SPI MISO Data Line |
 
 ### Wiring Diagram
 ![Wiring Diagram](images/Wiring-Diagram.jpg)

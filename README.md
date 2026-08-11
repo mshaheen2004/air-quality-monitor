@@ -42,23 +42,36 @@ This system measures real-time particulate matter mass concentrations ($\text{PM
 
 | Component | Quantity | Connection / Pin Mapping |
 | :--- | :---: | :--- |
-| **ESP32 Dev Board** | 1 | Microcontroller (Dual-core Wi-Fi + Bluetooth SoC) |
-| **Sensirion SPS30** | 1 | Optical Dust / PM Sensor (`TX` -> GPIO 16 `RX2`, `RX` -> GPIO 17 `TX2`, 5V, GND) |
-| **ILI9341 TFT Display** | 1 | 2.4" SPI Color Display (`CS` -> GPIO 2, `DC` -> GPIO 5, `RST` -> GPIO 4, SPI Pins) |
-| **5V Power Supply** | 1 | 5V / 2A Power Adapter |
+| **ESP32 Dev Board** | 1 | Main Microcontroller (Dual-core Wi-Fi + Bluetooth SoC) |
+| **18650 Li-ion Battery** | 1 | 3.7V Rechargeable Power Cell (`+` -> TP4056 `B+`, `-` -> TP4056 `B-`) |
+| **TP4056 Charging Module** | 1 | Li-ion Charger Module (`OUT+` -> Switch Side, `OUT-` -> Boost `IN-`) |
+| **Toggle Switch** | 1 | SPDT Power ON/OFF Switch (Side -> TP4056 `OUT+`, Middle -> Boost `IN+`) |
+| **MT3608 Boost Converter** | 1 | 3.7V to 5V Step-Up Converter (`OUT+` -> ESP32 `VIN`, `OUT-` -> ESP32 `GND`) |
+| **Sensirion SPS30** | 1 | Optical PM Sensor (`VCC` -> ESP32 `VIN` 5V, `GND` -> `GND`, `RX` -> GPIO 17 `TX2`, `TX` -> GPIO 16 `RX2`) |
+| **ILI9341 TFT Display** | 1 | 2.4" SPI Color Display (`VCC`/`LED` -> 3.3V, `GND` -> GND, `CS` -> GPIO 2, `RST` -> GPIO 4, `DC` -> GPIO 5, `SDI/MOSI` -> GPIO 23, `SCK` -> GPIO 18, `SDO/MISO` -> GPIO 19) |
 
 ```
-[ Sensirion SPS30 ]        [ ESP32 Dev Board ]        [ ILI9341 TFT Display ]
-  VCC -----------------------> 5V
-                               3.3V ---------------------> VCC / LED
-  GND -----------------------> GND ----------------------> GND
-  TX ------------------------> GPIO 16 (RX2)
-  RX ------------------------> GPIO 17 (TX2)
-                               GPIO 2 -------------------> CS
-                               GPIO 5 -------------------> DC
-                               GPIO 4 -------------------> RESET
-                               GPIO 23 (MOSI) -----------> SDI / MOSI
-                               GPIO 18 (SCK) ------------> SCK / CLK
+[ 18650 3.7V Battery ] ----(B+ / B-)----> [ TP4056 Charger ] 
+                                             |  (OUT+) -> [ Toggle Switch ] -> (IN+) 
+                                             |  (OUT-) ----------------------> (IN-) 
+                                                                                |
+                                                                        [ MT3608 Boost Converter ]
+                                                                                |  (OUT+) -> ESP32 VIN (5V)
+                                                                                |  (OUT-) -> ESP32 GND
+
+[ Sensirion SPS30 ]               [ ESP32 Dev Board ]               [ ILI9341 TFT Display ]
+  VCC ------------------------------> VIN (5V)
+                                      3.3V ---------------------------> VCC
+                                      3.3V ---------------------------> LED
+  GND ------------------------------> GND ----------------------------> GND
+  RX -------------------------------> GPIO 17 (TX2)
+  TX -------------------------------> GPIO 16 (RX2)
+                                      GPIO 2 -------------------------> CS
+                                      GPIO 4 -------------------------> RESET
+                                      GPIO 5 -------------------------> DC
+                                      GPIO 23 (MOSI) -----------------> SDI (MOSI)
+                                      GPIO 18 (SCK) ------------------> SCK (CLK)
+                                      GPIO 19 (MISO) -----------------> SDO (MISO)
 ```
 
 ---
